@@ -7,4 +7,5 @@ PyCryptodome
 Pillow
 email-validator
 flask-cors
+cryptography
 
