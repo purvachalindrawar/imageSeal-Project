@@ -1,0 +1,10 @@
+Flask
+Flask-Login
+bcrypt
+psycopg2-binary
+python-dotenv
+PyCryptodome
+Pillow
+email-validator
+flask-cors
+

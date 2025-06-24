@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: imageseal-backend
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: DATABASE_URL
+        value: your_neon_postgres_url_here
+      - key: SMTP_USER
+        value: your_email@gmail.com
+      - key: SMTP_PASS
+        value: your_gmail_app_password
+      - key: PUBLIC_DOMAIN
+        value: https://imageseal-backend.onrender.com
