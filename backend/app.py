@@ -99,4 +99,4 @@ def delete_image(image_id):
     return jsonify({"message": "Image deleted successfully"}), 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000, debug=True)
