@@ -156,7 +156,7 @@ def show_images():
             cols = st.columns(3)
             for i, img_obj in enumerate(images):
                 with cols[i % 3]:
-                    st.image(base64.b64decode(img_obj["data"]), use_column_width=True)
+                    st.image(base64.b64decode(img_obj["data"]), use_container_width=True)
 
                     # Delete button
                     if st.button("🗑️ Delete", key=f"delete_{img_obj['id']}_{i}"):
