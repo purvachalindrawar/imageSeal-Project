@@ -101,7 +101,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
             st.image(image_data, caption="Preview")
 
     elif upload_type == "From URL":
-        url = st.text_input("Paste image URL")
+        url = st.text_input("Paste image address only")
         if url and st.button("Fetch Image"):
             try:
                 resp = requests.get(url)
