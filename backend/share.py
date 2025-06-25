@@ -54,7 +54,7 @@ def share_image():
     conn.close()
 
     # Send email
-    link = f"http://localhost:5000/shared/{token}"
+    link = f"http://imageseal-securely-store-encrypt-and.onrender.com/shared/{token}"
     subject = "🔗 You've received a secure image from ImageVault"
     message = f"""
 Hi,
