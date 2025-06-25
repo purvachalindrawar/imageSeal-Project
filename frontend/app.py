@@ -57,7 +57,7 @@ if mode == "Signup" and not st.session_state.user_email:
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
     if st.button("Signup"):
-        res = requests.post("http://localhost:5000/auth/signup", json={"email": email, "password": password})
+        res = requests.post("http://imageseal-securely-store-encrypt-and.onrender.com/auth/signup", json={"email": email, "password": password})
         if res.status_code == 201:
             st.success("Signup successful! Please login.")
         else:
@@ -69,7 +69,7 @@ if mode == "Login" and not st.session_state.user_email:
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
-        res = requests.post("http://localhost:5000/auth/login", json={"email": email, "password": password})
+        res = requests.post("http://imageseal-securely-store-encrypt-and.onrender.com/auth/login", json={"email": email, "password": password})
         if res.status_code == 200:
             st.session_state.user_email = email
             st.session_state.user_id = res.json()["user_id"]
@@ -117,7 +117,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
         if "fetched_image" in st.session_state:
             if st.button("Upload"):
                 files = {"image": st.session_state.fetched_image}
-                res = requests.post(f"http://localhost:5000/upload?user_id={st.session_state.user_id}", files=files)
+                res = requests.post(f"http://imageseal-securely-store-encrypt-and.onrender.com/upload?user_id={st.session_state.user_id}", files=files)
                 if res.status_code == 200:
                     st.success("Image uploaded successfully!")
                     del st.session_state.fetched_image
@@ -136,7 +136,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
     if image_data:
         if st.button("Upload"):
             files = {"image": image_data}
-            res = requests.post(f"http://localhost:5000/upload?user_id={st.session_state.user_id}", files=files)
+            res = requests.post(f"http://imageseal-securely-store-encrypt-and.onrender.com/upload?user_id={st.session_state.user_id}", files=files)
             if res.status_code == 200:
                 st.success("Image uploaded successfully!")
                 st.session_state.view_mode = "view"
@@ -147,7 +147,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
 # Gallery View
 def show_images():
     st.title("🖼️ My Gallery")
-    res = requests.get(f"http://localhost:5000/images?email={st.session_state.user_email}")
+    res = requests.get(f"http://imageseal-securely-store-encrypt-and.onrender.com/images?email={st.session_state.user_email}")
     if res.status_code == 200:
         images = res.json().get("images", [])
         if not images:
@@ -160,7 +160,7 @@ def show_images():
 
                     # Delete button
                     if st.button("🗑️ Delete", key=f"delete_{img_obj['id']}_{i}"):
-                        delete = requests.delete(f"http://localhost:5000/image/{img_obj['id']}")
+                        delete = requests.delete(f"http://imageseal-securely-store-encrypt-and.onrender.com/image/{img_obj['id']}")
                         if delete.status_code == 200:
                             st.success("Image deleted!")
                             st.rerun()
@@ -178,7 +178,7 @@ def show_images():
                                     "sender_name": sender_name,
                                     "receiver_email": receiver_email
                                 }
-                                res = requests.post("http://localhost:5000/share", json=payload)
+                                res = requests.post("http://imageseal-securely-store-encrypt-and.onrender.com/share", json=payload)
                                 if res.status_code == 200:
                                     st.success("✅ Secure link shared via email!")
                                 else:
