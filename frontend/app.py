@@ -102,7 +102,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
 
     elif upload_type == "From URL":
         url = st.text_input("Paste image address only")
-        if url and st.button("Fetch Image"):
+        if url and st.button("Fetch Image", key="fetch_url_image"):
             try:
                 resp = requests.get(url)
                 if resp.status_code == 200:
@@ -115,7 +115,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
                 st.error("Invalid URL")
 
         if "fetched_image" in st.session_state:
-            if st.button("Upload"):
+            if st.button("Upload", key="upload_file_image"):
                 files = {"image": st.session_state.fetched_image}
                 res = requests.post(f"http://imageseal-securely-store-encrypt-and.onrender.com/upload?user_id={st.session_state.user_id}", files=files)
                 if res.status_code == 200:
