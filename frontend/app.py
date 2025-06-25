@@ -4,7 +4,7 @@ import base64
 from io import BytesIO
 from PIL import Image
 
-st.set_page_config(page_title="ImageVault", layout="wide")
+st.set_page_config(page_title="ImageSeal", layout="wide")
 
 # 🎨 Styling
 st.markdown("""
@@ -126,9 +126,9 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
                 else:
                     st.error(res.json().get("error", "Upload failed"))
 
-    elif upload_type == "Paste Image":
-        st.info("Paste your image here (Ctrl+V).")
-        uploaded_file = st.camera_input("Paste or capture an image")
+    elif upload_type == "Capture Image":
+        st.info("Capture your image here")
+        uploaded_file = st.camera_input("capture an image")
         if uploaded_file:
             image_data = uploaded_file.getvalue()
             st.image(image_data, caption="Preview")
