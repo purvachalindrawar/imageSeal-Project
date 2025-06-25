@@ -55,11 +55,11 @@ def share_image():
 
     # Send email
     link = f"http://imageseal-securely-store-encrypt-and.onrender.com/shared/{token}"
-    subject = "🔗 You've received a secure image from ImageVault"
+    subject = "🔗 You've received a secure image from ImageSeal"
     message = f"""
 Hi,
 
-You’ve received a secure image from {sender_name} via ImageVault.
+You’ve received a secure image from {sender_name} via ImageSeal.
 
 🔗 Link: {link}
 🔐 Password: {password}
@@ -67,7 +67,7 @@ You’ve received a secure image from {sender_name} via ImageVault.
 Visit the link and enter the password to view and download the image.
 
 Regards,  
-ImageVault Team
+ImageSeal Team
 """
 
     send_email(receiver_email, subject, message)
