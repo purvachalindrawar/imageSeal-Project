@@ -126,7 +126,7 @@ if st.session_state.user_email and st.session_state.view_mode == "upload":
                 else:
                     st.error(res.json().get("error", "Upload failed"))
 
-    elif upload_type == "Capture Image":
+    elif upload_type == "Paste Image":
         st.info("Capture your image here")
         uploaded_file = st.camera_input("capture an image")
         if uploaded_file:
